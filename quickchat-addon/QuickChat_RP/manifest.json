@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "クイックチャット (人狼用) RP",
+    "description": "クイックチャットアイテムのテクスチャ",
+    "uuid": "ac8ff470-745c-417b-8124-018149d624e2",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "903ae409-47da-4f8a-b21c-f16e9b88037f",
+      "version": [1, 0, 0]
+    }
+  ]
+}

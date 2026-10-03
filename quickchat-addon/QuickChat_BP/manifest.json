@@ -1,0 +1,29 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "クイックチャット (人狼用) BP",
+    "description": "半径12マス以内の人にだけ届くクイックチャットアイテム",
+    "uuid": "5cd62ea3-4ea9-4441-84e8-029b0b2366a1",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "15ea3c82-a843-4b7a-883f-b29a23f934c0",
+      "version": [1, 0, 0]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "66575109-067a-4a84-a214-76ef84666763",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    { "module_name": "@minecraft/server", "version": "1.11.0" },
+    { "module_name": "@minecraft/server-ui", "version": "1.2.0" },
+    { "uuid": "ac8ff470-745c-417b-8124-018149d624e2", "version": [1, 0, 0] }
+  ]
+}
