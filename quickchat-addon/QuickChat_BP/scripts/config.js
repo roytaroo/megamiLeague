@@ -12,11 +12,15 @@ export const CONFIG = {
   COOLDOWN_SECONDS: 2,
 
   // 死亡扱いにするタグ（/tag @s add dead など）。スペクテイターモードも死亡扱い
-  // 死亡者のメッセージは近くの死亡者にしか届かない
+  // 死亡者のメッセージは死亡者にしか届かない
   DEAD_TAG: "dead",
 
   // true: 死亡者は生存者のメッセージを聞ける / false: 聞けない
   DEAD_CAN_HEAR_ALIVE: true,
+
+  // true: 死亡者（スペクテイター）は距離・ディメンションに関係なく全員の声が聞こえる
+  // （死亡者どうしの会話も全体に届く）
+  DEAD_HEAR_EVERYWHERE: true,
 
   // このタグが付いている人はクイックチャットを使えない（夜の間など）
   // 例: /tag @a add qc_mute  →  /tag @a remove qc_mute

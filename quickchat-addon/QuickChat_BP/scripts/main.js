@@ -162,23 +162,27 @@ function sendQuickChat(sender, text) {
   const prefix = senderDead ? CONFIG.PREFIX_DEAD : CONFIG.PREFIX_ALIVE;
   const line = `${prefix} §f${sender.name}§r: ${text}`;
 
-  const nearby = sender.dimension.getPlayers({ location: sender.location, maxDistance: CONFIG.RANGE });
-  let listeners = 0;
-  for (const p of nearby) {
+  const nearbyIds = new Set(
+    sender.dimension.getPlayers({ location: sender.location, maxDistance: CONFIG.RANGE }).map((p) => p.id)
+  );
+  let nearbyListeners = 0;
+  for (const p of world.getAllPlayers()) {
     if (p.id === sender.id) continue;
     const listenerDead = isDead(p);
+    const isNearby = nearbyIds.has(p.id);
     if (senderDead && !listenerDead) continue; // 死者の声は生存者に届かない
     if (!senderDead && listenerDead && !CONFIG.DEAD_CAN_HEAR_ALIVE) continue;
+    if (!isNearby && !(listenerDead && CONFIG.DEAD_HEAR_EVERYWHERE)) continue;
 
     p.sendMessage(line);
     if (CONFIG.SOUND) {
       p.playSound(CONFIG.SOUND.id, { volume: CONFIG.SOUND.volume, pitch: CONFIG.SOUND.pitch });
     }
-    listeners++;
+    if (isNearby || senderDead) nearbyListeners++;
   }
 
   sender.sendMessage(line);
-  if (listeners === 0 && CONFIG.NOTIFY_NO_LISTENERS) {
+  if (nearbyListeners === 0 && CONFIG.NOTIFY_NO_LISTENERS) {
     sender.sendMessage("§7（近くに聞こえる人はいませんでした）");
   }
 }
